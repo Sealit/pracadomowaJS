@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http - equiv="X-U-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bramka OR</title>
+</head>
+<body id="body">
+    
+    <section>
+        <header>
+        <h1> ALGORYTMY oraz LOGIKA</h1>
+        <h2> Kliknij jeden z przycisków, aby zobaczyć funkjonowanie bramki LUB</h2>
+        </header>
+        
+      <main>
+        <div class="grid-container">
+   
+            <div id="btn" class="grid-item">pierwszy przycisk</div>
+            
+          
+          
+            <div id="btn2" class="grid-item"> drugi przycisk</div>  
+           </div>
+       <div id="runner"></div>
+      
+        </main>
+        <footer id="out">
+            <p> LUB: bramka logiczna - gdy wciśniemy co najmniej jeden z elementów, uzyskujemy 'PRAWDĘ', czyli wartość logiczną 1</p>
+        </footer>
+        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis velit qui adipisci temporibus tenetur delectus est perspiciatis recusandae, neque quisquam officiis modi at! Praesentium, expedita neque optio quo sequi possimus?</h2>
+    </section>
+    <script>
+        
+        let ftr = document.getElementById("out");
+        let btn1 = document.getElementById("btn");
+        let btn2 = document.getElementById("btn2");
+        let dot = document.getElementById("runner");
+
+        function button_up(btn) {
+            btn.style.backgroundColor = "black";
+            btn.style.color = "white";
+        }
+
+        function button_down(btn) {
+            btn.style.backgroundColor = "white";
+            btn.style.color = "black";
+        }
+
+        function is_down(btn) {
+            return btn.style.backgroundColor == "white";
+        }
+
+        function update_output() {
+            if(is_down(btn1) || is_down(btn2))
+                button_down(ftr);
+            else
+                button_up(ftr);
+        }
+
+        function changeColor(btn) {
+            if (is_down(btn))
+                button_up(btn);
+            else 
+                button_down(btn);
+            update_output();
+            dot.classList.remove('go');
+            dot.offsetHeight; /* trigger reflow */
+            dot.classList.add('go');
+        }
+
+        button_up(btn1);
+        button_up(btn2);
+        update_output();
+
+        btn.addEventListener ("click", () => changeColor(btn1));
+        btn2.addEventListener ("click", () => changeColor(btn2));
+
+    </script>
+</body>
+
+</html>
+
+
+   
+
